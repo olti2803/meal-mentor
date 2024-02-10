@@ -8,10 +8,16 @@
 import SwiftUI
 
 @main
-struct meal_mentorApp: App {
+struct MealMentorApp: App {
+    init() {
+        // Set the global tint color
+        UINavigationBar.appearance().tintColor = UIColor.systemGreen
+    }
+
     var body: some Scene {
         WindowGroup {
             ContentView()
         }
     }
 }
+
