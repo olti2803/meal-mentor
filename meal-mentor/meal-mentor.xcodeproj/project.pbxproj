@@ -21,6 +21,7 @@
 		B66878BF2B77C07B000DB786 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66878BE2B77C07B000DB786 /* ColorExtension.swift */; };
 		B66878C12B77C46F000DB786 /* TrackingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66878C02B77C46F000DB786 /* TrackingView.swift */; };
 		B66878C32B77C48C000DB786 /* UserProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66878C22B77C48C000DB786 /* UserProfileView.swift */; };
+		B66878C52B77D4C1000DB786 /* LaunchScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66878C42B77D4C1000DB786 /* LaunchScreenView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,8 @@
 		B66878BE2B77C07B000DB786 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		B66878C02B77C46F000DB786 /* TrackingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingView.swift; sourceTree = "<group>"; };
 		B66878C22B77C48C000DB786 /* UserProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileView.swift; sourceTree = "<group>"; };
+		B66878C42B77D4C1000DB786 /* LaunchScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenView.swift; sourceTree = "<group>"; };
+		B66878C62B77D724000DB786 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,11 +111,13 @@
 		B668788B2B772420000DB786 /* meal-mentor */ = {
 			isa = PBXGroup;
 			children = (
+				B66878C62B77D724000DB786 /* Info.plist */,
 				B668788C2B772420000DB786 /* meal_mentorApp.swift */,
 				B66878B62B77B2BF000DB786 /* FoodEntry.swift */,
 				B66878BE2B77C07B000DB786 /* ColorExtension.swift */,
 				B66878C02B77C46F000DB786 /* TrackingView.swift */,
 				B66878B82B77B30E000DB786 /* DailySummaryView.swift */,
+				B66878C42B77D4C1000DB786 /* LaunchScreenView.swift */,
 				B668788E2B772420000DB786 /* ContentView.swift */,
 				B66878C22B77C48C000DB786 /* UserProfileView.swift */,
 				B66878BC2B77B373000DB786 /* AddEntryView.swift */,
@@ -283,6 +288,7 @@
 				B66878B92B77B30E000DB786 /* DailySummaryView.swift in Sources */,
 				B66878B72B77B2BF000DB786 /* FoodEntry.swift in Sources */,
 				B66878C12B77C46F000DB786 /* TrackingView.swift in Sources */,
+				B66878C52B77D4C1000DB786 /* LaunchScreenView.swift in Sources */,
 				B66878BD2B77B374000DB786 /* AddEntryView.swift in Sources */,
 				B668788D2B772420000DB786 /* meal_mentorApp.swift in Sources */,
 				B66878BF2B77C07B000DB786 /* ColorExtension.swift in Sources */,
@@ -450,11 +456,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"meal-mentor/Preview Content\"";
+				DEVELOPMENT_TEAM = BGK3XF757S;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "meal-mentor/Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -478,11 +485,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"meal-mentor/Preview Content\"";
+				DEVELOPMENT_TEAM = BGK3XF757S;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "meal-mentor/Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (

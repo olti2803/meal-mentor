@@ -13,8 +13,8 @@ struct DailySummaryView: View {
         VStack {
             
             Text("Summary and Advice Based on Trends")
-                .font(.headline) // Font style
-                .foregroundColor(.green) // Text color
+                .font(Font.custom("PingFang TC Semibold", size: 15))
+                .foregroundColor(.accentColor) // Text color
                 .padding() // Padding around the text
                 .background(Color.black.opacity(0.1)) // Background color with some transparency
                 .cornerRadius(10) // Rounded corners
