@@ -40,6 +40,28 @@ def get_food_type():
         else:
             print("Invalid food type. Please choose from:", valid_food_types)
 
+# Function to display past entries and prompt user to select one for deletion
+def select_entry_to_delete():
+    # Retrieve past entries for the user
+    cursor.execute("SELECT id, food_type, count FROM User WHERE name = ?", (name,))
+    past_entries = cursor.fetchall()
+    
+    # Display past entries
+    print("Past entries:")
+    for entry in past_entries:
+        print(f"ID: {entry[0]}, Food Type: {entry[1]}, Count: {entry[2]}")
+    
+    # Prompt user to select entry to delete
+    while True:
+        try:
+            entry_id = int(input("Enter the ID of the entry to delete: "))
+            if entry_id in [entry[0] for entry in past_entries]:
+                return entry_id
+            else:
+                print("Invalid entry ID. Please choose a valid ID.")
+        except ValueError:
+            print("Invalid input. Please enter a number.")
+
 # Check if the user already exists in the database
 cursor.execute("SELECT name FROM User")
 existing_users = cursor.fetchall()
@@ -58,39 +80,32 @@ while True:
     choice = input("Enter your choice: ")
     
     if choice == '1':
-        # Prompt user for macronutrient input
+        # Add food entry
         carbohydrates, fats, dairy, protein = get_macro_input()
-        
-        # Prompt user for food type
         food_type = get_food_type()
-        
-        # Insert or update macronutrient data into User table
         cursor.execute("SELECT count FROM User WHERE name = ? AND food_type = ?", (name, food_type))
         existing_count = cursor.fetchone()
         if existing_count:
-            # Food type already exists for the user, update the count
             count = existing_count[0] + 1
             cursor.execute("UPDATE User SET count = ? WHERE name = ? AND food_type = ?", (count, name, food_type))
         else:
-            # Food type doesn't exist for the user, insert with count 1
             count = 1
             cursor.execute("INSERT INTO User (name, food_type, carbohydrates, fats, dairy, protein, count) VALUES (?, ?, ?, ?, ?, ?, ?)", (name, food_type, carbohydrates, fats, dairy, protein, count))
-        
-        # Commit changes to the database
         conn.commit()
         print("Data inserted successfully.")
     
     elif choice == '2':
-        # Prompt user for food type to delete
-        food_type_to_delete = get_food_type()
-        
-        # Delete the food entry for the specified food type
-        cursor.execute("DELETE FROM User WHERE name = ? AND food_type = ?", (name, food_type_to_delete))
-        
-        # Commit changes to the database
+        # Delete food entry
+        entry_id_to_delete = select_entry_to_delete()
+        cursor.execute("SELECT count FROM User WHERE id = ?", (entry_id_to_delete,))
+        existing_count = cursor.fetchone()[0]
+        if existing_count > 1:
+            cursor.execute("UPDATE User SET count = ? WHERE id = ?", (existing_count - 1, entry_id_to_delete))
+        else:
+            cursor.execute("DELETE FROM User WHERE id = ?", (entry_id_to_delete,))
         conn.commit()
-        print("Data deleted successfully.")
-    
+        print("Entry deleted successfully.")
+        
     elif choice == '3':
         break
 
