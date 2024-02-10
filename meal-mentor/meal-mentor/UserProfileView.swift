@@ -9,7 +9,8 @@ import SwiftUI
 struct UserProfileView: View {
     @State private var name: String = ""
     @State private var weight: String = ""
-    @State private var height: String = ""
+    @State private var feet: Int = 1
+    @State private var inches: Int = 0
 
     var body: some View {
         VStack {
@@ -20,14 +21,35 @@ struct UserProfileView: View {
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .padding()
                 .keyboardType(.numberPad) // Set keyboard type to number pad
-            TextField("Height", text: $height)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .padding()
-                .keyboardType(.numberPad) // Set keyboard type to number pad
+            
+            HStack {
+                Picker("Feet", selection: $feet) {
+                    ForEach(1...7, id: \.self) { foot in
+                        Text("\(foot)")
+                    }
+                }
+                .pickerStyle(MenuPickerStyle())
+                .frame(width: 80)
+                
+                Text("feet")
+                
+                Picker("Inches", selection: $inches) {
+                    ForEach(0...11, id: \.self) { inch in
+                        Text("\(inch)")
+                    }
+                }
+                .pickerStyle(MenuPickerStyle())
+                .frame(width: 80)
+                
+                Text("inches")
+            }
+            .padding()
+            
 
             Button(action: {
                 // Call a function to create profile or perform any other action
-                let profile = createProfile(name: name, weight: Double(weight) ?? 0, height: Double(height) ?? 0)
+                let heightInInches = Double(feet * 12 + inches)
+                let profile = createProfile(name: name, weight: Double(weight) ?? 0, height: heightInInches)
                 print("Created profile: \(profile)")
             }) {
                 Text("Create Profile")
@@ -59,3 +81,4 @@ func createProfile(name: String, weight: Double, height: Double) -> Profile {
     let newProfile = Profile(name: name, weight: weight, height: height)
     return newProfile
 }
+
