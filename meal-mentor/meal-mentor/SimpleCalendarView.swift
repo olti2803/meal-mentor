@@ -51,7 +51,7 @@ struct SimpleCalendarView: View {
                     if let date = dates[index] {
                         Text("\(calendar.component(.day, from: date))")
                             .padding(10)
-                            .background(calendar.isDate(date, inSameDayAs: selectedDate) ? Color.blue : Color.clear)
+                            .background(calendar.isDate(date, inSameDayAs: selectedDate) ? Color.gray : Color.clear)
                             .clipShape(Circle())
                             .onTapGesture {
                                 self.selectedDate = date

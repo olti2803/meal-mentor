@@ -36,7 +36,8 @@ struct TodaysInsightView: View {
                  Image("Divider") // Replace with the actual name of your image
                      .resizable()
                      .scaledToFit()
-                     .frame(height: 100) // Adjust the height as needed for your divider
+                     .frame(height: 100)
+                     .frame(width: 350)
                      .padding(5)
 
                 // Calendar view below the summary
