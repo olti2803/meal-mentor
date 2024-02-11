@@ -8,7 +8,8 @@ import SwiftUI
 
 struct UserProfileView: View {
     @State private var name: String = ""
-    @State private var weight: Int = 1
+    @State private var weightText: String = ""
+    @State private var calorieGoalText: String = ""
     @State private var feet: Int = 1
     @State private var inches: Int = 0
     @State private var isProfileCreated: Bool = false
@@ -24,13 +25,10 @@ struct UserProfileView: View {
                     .padding()
                 
                 HStack {
-                    Picker("Weight lbs", selection: $weight) {
-                        ForEach(1...500, id: \.self) { pound in
-                            Text("\(pound)")
-                        }
-                    }
-                    .pickerStyle(MenuPickerStyle())
-                    .frame(width: 100)
+                    TextField("Weight lbs", text: $weightText)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .keyboardType(.numberPad)
+                        .frame(width: 100)
                     
                     Text("lbs")
                 }
@@ -59,17 +57,24 @@ struct UserProfileView: View {
                 }
                 .padding()
 
+                TextField("Calorie Goal", text: $calorieGoalText)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .keyboardType(.numberPad)
+                    .padding()
+
                 Button(action: {
                     // Call a function to create profile or perform any other action
+                    let weight = Double(weightText) ?? 0
                     let heightInInches = Double(feet * 12 + inches)
-                    let profile = createProfile(name: name, weight: Double(weight), height: heightInInches)
+                    let calorieGoal = Double(calorieGoalText) ?? 0
+                    let profile = createProfile(name: name, weight: weight, height: heightInInches, calorieGoal: calorieGoal)
                     print("Created profile: \(profile)")
                     self.isProfileCreated = true
                     self.createdProfile = profile
                 }) {
                     Text("Create Profile")
                         .padding()
-                        .background(Color.blue)
+                        .background(Color.accentColor)
                         .foregroundColor(.white)
                         .cornerRadius(10)
                 }
@@ -89,12 +94,13 @@ struct UserProfileView_Previews: PreviewProvider {
 
 struct Profile {
     var name: String
-    var weight: Int
+    var weight: Double
     var height: Double
+    var calorieGoal: Double
 }
 
-func createProfile(name: String, weight: Double, height: Double) -> Profile {
-    let newProfile = Profile(name: name, weight: Int(weight), height: height)
+func createProfile(name: String, weight: Double, height: Double, calorieGoal: Double) -> Profile {
+    let newProfile = Profile(name: name, weight: weight, height: height, calorieGoal: calorieGoal)
     return newProfile
 }
 
@@ -106,7 +112,9 @@ struct ProfileDetailView: View {
             Text("Name: \(profile.name)")
             Text("Weight: \(profile.weight) lbs")
             Text("Height: \(Int(profile.height / 12)) feet \(Int(profile.height) % 12) inches")
+            Text("Calorie Goal: \(profile.calorieGoal)")
         }
         .padding()
     }
 }
+
