@@ -7,24 +7,29 @@
 import SwiftUI
 
 struct TrackingView: View {
-    // State to control navigation
+    @StateObject private var viewModel = TrackingViewModel()
     @State private var isShowingAddEntryView = false
 
     var body: some View {
         NavigationView {
             List {
-                // Your existing tracking list content goes here
+                ForEach(viewModel.entries) { entry in
+                    HStack {
+                        Text(entry.name)
+                        Spacer()
+                        Text("\(entry.calories) kcal")
+                    }
+                }
+                .onDelete(perform: viewModel.deleteEntry)
                 
-                // Navigation to AddEntryView
                 Button("Add New Entry") {
                     isShowingAddEntryView = true
                 }
-                .foregroundColor(.blue) // Make the button text blue, or style as you prefer
+                .foregroundColor(.blue)
             }
             .navigationTitle("Tracking")
-            // Use .sheet for a modal presentation
             .sheet(isPresented: $isShowingAddEntryView) {
-                AddEntryView()
+                AddEntryView(viewModel: viewModel)
             }
         }
     }
@@ -35,4 +40,3 @@ struct TrackingView_Previews: PreviewProvider {
         TrackingView()
     }
 }
-

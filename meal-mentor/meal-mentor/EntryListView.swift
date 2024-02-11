@@ -9,9 +9,9 @@ import SwiftUI
 
 struct EntryListView: View {
     var entries: [FoodEntry] = [
-        FoodEntry(name: "Apple", calories: 95, date: Date()),
-        FoodEntry(name: "Banana", calories: 105, date: Date())
-    ]
+          FoodEntry(name: "Apple", calories: 95, fat: 0, protein: 0, carb: 25, date: Date()),
+          FoodEntry(name: "Banana", calories: 105, fat: 0, protein: 1, carb: 27, date: Date())
+      ]
 
     var body: some View {
         List(entries) { entry in

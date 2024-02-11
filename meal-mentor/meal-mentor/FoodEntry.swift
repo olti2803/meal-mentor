@@ -7,11 +7,14 @@
 
 import Foundation
 
-// Define a structure to represent a food entry.
 struct FoodEntry: Identifiable {
-    var id = UUID()
+    let id = UUID()
     var name: String
     var calories: Int
-    var date: Date
+    var fat: Int
+    var protein: Int
+    var carb: Int
+    var date: Date  // The date the entry was added
 }
+
 

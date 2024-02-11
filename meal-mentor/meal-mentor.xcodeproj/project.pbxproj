@@ -24,6 +24,7 @@
 		B66878C52B77D4C1000DB786 /* LaunchScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66878C42B77D4C1000DB786 /* LaunchScreenView.swift */; };
 		B66878CA2B78110B000DB786 /* TodaysInsightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66878C92B78110B000DB786 /* TodaysInsightView.swift */; };
 		B66878CC2B7814F4000DB786 /* SimpleCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66878CB2B7814F4000DB786 /* SimpleCalendarView.swift */; };
+		B66878CE2B7857AC000DB786 /* TrackingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66878CD2B7857AC000DB786 /* TrackingViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		B66878C62B77D724000DB786 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		B66878C92B78110B000DB786 /* TodaysInsightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodaysInsightView.swift; sourceTree = "<group>"; };
 		B66878CB2B7814F4000DB786 /* SimpleCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleCalendarView.swift; sourceTree = "<group>"; };
+		B66878CD2B7857AC000DB786 /* TrackingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +123,7 @@
 				B66878C92B78110B000DB786 /* TodaysInsightView.swift */,
 				B66878BE2B77C07B000DB786 /* ColorExtension.swift */,
 				B66878C02B77C46F000DB786 /* TrackingView.swift */,
+				B66878CD2B7857AC000DB786 /* TrackingViewModel.swift */,
 				B66878B82B77B30E000DB786 /* DailySummaryView.swift */,
 				B66878C42B77D4C1000DB786 /* LaunchScreenView.swift */,
 				B668788E2B772420000DB786 /* ContentView.swift */,
@@ -301,6 +304,7 @@
 				B66878BF2B77C07B000DB786 /* ColorExtension.swift in Sources */,
 				B66878CC2B7814F4000DB786 /* SimpleCalendarView.swift in Sources */,
 				B66878BB2B77B358000DB786 /* EntryListView.swift in Sources */,
+				B66878CE2B7857AC000DB786 /* TrackingViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

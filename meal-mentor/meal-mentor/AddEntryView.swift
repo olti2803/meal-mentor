@@ -1,12 +1,9 @@
-//
-//  AddEntryView.swift
-//  meal-mentor
-//
-//  Created by Olti Gjoni on 2/10/24.
-//
 import SwiftUI
 
 struct AddEntryView: View {
+    @Environment(\.presentationMode) var presentationMode
+    @ObservedObject var viewModel: TrackingViewModel
+
     @State private var name: String = ""
     @State private var calories: String = ""
     @State private var protein: String = ""
@@ -30,8 +27,19 @@ struct AddEntryView: View {
                 }
                 
                 Button("Add Entry") {
-                    // Implement the add entry logic here
-                    // For example, validate and save the data to your model or database
+                    guard let caloriesInt = Int(calories),
+                          let proteinInt = Int(protein),
+                          let carbsInt = Int(carbs),
+                          let fatInt = Int(fat) else {
+                        showingAlert = true
+                        return
+                    }
+                    
+                    let newEntry = FoodEntry(name: name, calories: caloriesInt, fat: fatInt, protein: proteinInt, carb: carbsInt, date: Date())
+                    viewModel.addEntry(newEntry)
+                    
+                    // Dismiss the view after adding the entry
+                    presentationMode.wrappedValue.dismiss()
                 }
             }
             .navigationTitle("Add Food Entry")
@@ -44,6 +52,6 @@ struct AddEntryView: View {
 
 struct AddEntryView_Previews: PreviewProvider {
     static var previews: some View {
-        AddEntryView()
+        AddEntryView(viewModel: TrackingViewModel())
     }
 }
