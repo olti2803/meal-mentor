@@ -26,6 +26,22 @@ class TrackingViewModel: ObservableObject {
     func entries(for date: Date) -> [FoodEntry] {
         return entries.filter { Calendar.current.isDate($0.date, inSameDayAs: date) }
     }
+    
+    // Method to convert daily entries to JSON
+    func jsonForEntries(on date: Date) -> String? {
+        let dailyEntries = entries(for: date)
+        let encoder = JSONEncoder()
+        encoder.dateEncodingStrategy = .iso8601 // Set the date encoding strategy
+        encoder.outputFormatting = .prettyPrinted // Makes the JSON output more readable
+        
+        do {
+            let jsonData = try encoder.encode(dailyEntries)
+            return String(data: jsonData, encoding: .utf8)
+        } catch {
+            print("Error encoding entries to JSON: \(error)")
+            return nil
+        }
+    }
 
     func loadEntriesForSelectedDate() {
         // Filter and load entries for the selected date
