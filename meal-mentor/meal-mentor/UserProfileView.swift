@@ -1,15 +1,12 @@
-//
-//  UserProfileView.swift
-//  meal-mentor
-//
-//  Created by Olti Gjoni on 2/10/24.
-//
 import SwiftUI
 
 struct UserProfileView: View {
     @State private var name: String = ""
     @State private var weightText: String = ""
     @State private var calorieGoalText: String = ""
+    @State private var proteinGoalText: String = ""
+    @State private var fatGoalText: String = ""
+    @State private var carbsGoalText: String = ""
     @State private var feet: Int = 1
     @State private var inches: Int = 0
     @State private var isProfileCreated: Bool = false
@@ -61,13 +58,31 @@ struct UserProfileView: View {
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .keyboardType(.numberPad)
                     .padding()
+                
+                TextField("Protein Goal (grams)", text: $proteinGoalText)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .keyboardType(.numberPad)
+                    .padding()
+                
+                TextField("Fat Goal (grams)", text: $fatGoalText)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .keyboardType(.numberPad)
+                    .padding()
+                
+                TextField("Carbs Goal (grams)", text: $carbsGoalText)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .keyboardType(.numberPad)
+                    .padding()
 
                 Button(action: {
                     // Call a function to create profile or perform any other action
                     let weight = Double(weightText) ?? 0
                     let heightInInches = Double(feet * 12 + inches)
                     let calorieGoal = Double(calorieGoalText) ?? 0
-                    let profile = createProfile(name: name, weight: weight, height: heightInInches, calorieGoal: calorieGoal)
+                    let proteinGoal = Double(proteinGoalText) ?? 0
+                    let fatGoal = Double(fatGoalText) ?? 0
+                    let carbsGoal = Double(carbsGoalText) ?? 0
+                    let profile = createProfile(name: name, weight: weight, height: heightInInches, calorieGoal: calorieGoal, proteinGoal: proteinGoal, fatGoal: fatGoal, carbsGoal: carbsGoal)
                     print("Created profile: \(profile)")
                     self.isProfileCreated = true
                     self.createdProfile = profile
@@ -97,10 +112,13 @@ struct Profile {
     var weight: Double
     var height: Double
     var calorieGoal: Double
+    var proteinGoal: Double
+    var fatGoal: Double
+    var carbsGoal: Double
 }
 
-func createProfile(name: String, weight: Double, height: Double, calorieGoal: Double) -> Profile {
-    let newProfile = Profile(name: name, weight: weight, height: height, calorieGoal: calorieGoal)
+func createProfile(name: String, weight: Double, height: Double, calorieGoal: Double, proteinGoal: Double, fatGoal: Double, carbsGoal: Double) -> Profile {
+    let newProfile = Profile(name: name, weight: weight, height: height, calorieGoal: calorieGoal, proteinGoal: proteinGoal, fatGoal: fatGoal, carbsGoal: carbsGoal)
     return newProfile
 }
 
@@ -113,8 +131,10 @@ struct ProfileDetailView: View {
             Text("Weight: \(profile.weight) lbs")
             Text("Height: \(Int(profile.height / 12)) feet \(Int(profile.height) % 12) inches")
             Text("Calorie Goal: \(profile.calorieGoal)")
+            Text("Protein Goal: \(profile.proteinGoal) grams")
+            Text("Fat Goal: \(profile.fatGoal) grams")
+            Text("Carbs Goal: \(profile.carbsGoal) grams")
         }
         .padding()
     }
 }
-
