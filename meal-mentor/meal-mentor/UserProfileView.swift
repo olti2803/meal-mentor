@@ -76,12 +76,12 @@ struct UserProfileView: View {
 
                 Button(action: {
                     // Call a function to create profile or perform any other action
-                    let weight = Double(weightText) ?? 0
-                    let heightInInches = Double(feet * 12 + inches)
-                    let calorieGoal = Double(calorieGoalText) ?? 0
-                    let proteinGoal = Double(proteinGoalText) ?? 0
-                    let fatGoal = Double(fatGoalText) ?? 0
-                    let carbsGoal = Double(carbsGoalText) ?? 0
+                    let weight = Int(weightText) ?? 0
+                    let heightInInches = Int(feet * 12 + inches)
+                    let calorieGoal = Int(calorieGoalText) ?? 0
+                    let proteinGoal = Int(proteinGoalText) ?? 0
+                    let fatGoal = Int(fatGoalText) ?? 0
+                    let carbsGoal = Int(carbsGoalText) ?? 0
                     let profile = createProfile(name: name, weight: weight, height: heightInInches, calorieGoal: calorieGoal, proteinGoal: proteinGoal, fatGoal: fatGoal, carbsGoal: carbsGoal)
                     print("Created profile: \(profile)")
                     self.isProfileCreated = true
@@ -109,15 +109,15 @@ struct UserProfileView_Previews: PreviewProvider {
 
 struct Profile {
     var name: String
-    var weight: Double
-    var height: Double
-    var calorieGoal: Double
-    var proteinGoal: Double
-    var fatGoal: Double
-    var carbsGoal: Double
+    var weight: Int
+    var height: Int
+    var calorieGoal: Int
+    var proteinGoal: Int
+    var fatGoal: Int
+    var carbsGoal: Int
 }
 
-func createProfile(name: String, weight: Double, height: Double, calorieGoal: Double, proteinGoal: Double, fatGoal: Double, carbsGoal: Double) -> Profile {
+func createProfile(name: String, weight: Int, height: Int, calorieGoal: Int, proteinGoal: Int, fatGoal: Int, carbsGoal: Int) -> Profile {
     let newProfile = Profile(name: name, weight: weight, height: height, calorieGoal: calorieGoal, proteinGoal: proteinGoal, fatGoal: fatGoal, carbsGoal: carbsGoal)
     return newProfile
 }
@@ -129,7 +129,7 @@ struct ProfileDetailView: View {
         VStack {
             Text("Name: \(profile.name)")
             Text("Weight: \(profile.weight) lbs")
-            Text("Height: \(Int(profile.height / 12)) feet \(Int(profile.height) % 12) inches")
+            Text("Height: \(profile.height / 12) feet \(profile.height % 12) inches")
             Text("Calorie Goal: \(profile.calorieGoal)")
             Text("Protein Goal: \(profile.proteinGoal) grams")
             Text("Fat Goal: \(profile.fatGoal) grams")
@@ -138,3 +138,4 @@ struct ProfileDetailView: View {
         .padding()
     }
 }
+
