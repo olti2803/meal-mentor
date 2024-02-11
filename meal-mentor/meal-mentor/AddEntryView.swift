@@ -9,6 +9,7 @@ struct AddEntryView: View {
     @State private var protein: String = ""
     @State private var carbs: String = ""
     @State private var fat: String = ""
+    @State private var entryDate: Date = Date() // Add this line for the entry date
     @State private var showingAlert = false
 
     var body: some View {
@@ -16,26 +17,20 @@ struct AddEntryView: View {
             Form {
                 Section(header: Text("Food Details")) {
                     TextField("Food Name", text: $name)
-                    TextField("Calories (kcal)", text: $calories)
-                        .keyboardType(.decimalPad)
-                    TextField("Protein (g)", text: $protein)
-                        .keyboardType(.decimalPad)
-                    TextField("Carbs (g)", text: $carbs)
-                        .keyboardType(.decimalPad)
-                    TextField("Fat (g)", text: $fat)
-                        .keyboardType(.decimalPad)
+                    TextField("Calories (kcal)", text: $calories).keyboardType(.decimalPad)
+                    TextField("Protein (g)", text: $protein).keyboardType(.decimalPad)
+                    TextField("Carbs (g)", text: $carbs).keyboardType(.decimalPad)
+                    TextField("Fat (g)", text: $fat).keyboardType(.decimalPad)
+                    DatePicker("Date", selection: $entryDate, displayedComponents: .date) // Add this line for the date picker
                 }
                 
                 Button("Add Entry") {
-                    guard let caloriesInt = Int(calories),
-                          let proteinInt = Int(protein),
-                          let carbsInt = Int(carbs),
-                          let fatInt = Int(fat) else {
+                    guard let caloriesInt = Int(calories), let proteinInt = Int(protein),
+                          let carbsInt = Int(carbs), let fatInt = Int(fat) else {
                         showingAlert = true
                         return
                     }
-                    
-                    let newEntry = FoodEntry(name: name, calories: caloriesInt, fat: fatInt, protein: proteinInt, carb: carbsInt, date: Date())
+                    let newEntry = FoodEntry(name: name, calories: caloriesInt, fat: fatInt, protein: proteinInt, carb: carbsInt, date: entryDate)
                     viewModel.addEntry(newEntry)
                     
                     // Dismiss the view after adding the entry

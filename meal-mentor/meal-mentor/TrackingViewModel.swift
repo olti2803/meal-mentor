@@ -17,9 +17,14 @@ class TrackingViewModel: ObservableObject {
         loadEntriesForSelectedDate()
     }
 
-    func addEntry(_ entry: FoodEntry) {
-        entries.append(entry)
-        // Save entries to persistent storage if needed
+    func addEntry(_ newEntry: FoodEntry) {
+        entries.append(newEntry)
+        // Save to persistent storage if needed
+    }
+    
+    // Call this method to get entries for a specific date
+    func entries(for date: Date) -> [FoodEntry] {
+        return entries.filter { Calendar.current.isDate($0.date, inSameDayAs: date) }
     }
 
     func loadEntriesForSelectedDate() {
