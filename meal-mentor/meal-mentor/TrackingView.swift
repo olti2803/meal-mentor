@@ -6,6 +6,7 @@
 //
 import SwiftUI
 
+
 struct TrackingView: View {
     @StateObject private var viewModel = TrackingViewModel()
     @State private var isShowingAddEntryView = false
@@ -32,8 +33,11 @@ struct TrackingView: View {
                 AddEntryView(viewModel: viewModel)
             }
         }
+     
     }
 }
+
+
 
 struct TrackingView_Previews: PreviewProvider {
     static var previews: some View {

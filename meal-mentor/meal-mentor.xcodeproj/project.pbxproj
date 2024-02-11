@@ -25,6 +25,8 @@
 		B66878CA2B78110B000DB786 /* TodaysInsightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66878C92B78110B000DB786 /* TodaysInsightView.swift */; };
 		B66878CC2B7814F4000DB786 /* SimpleCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66878CB2B7814F4000DB786 /* SimpleCalendarView.swift */; };
 		B66878CE2B7857AC000DB786 /* TrackingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66878CD2B7857AC000DB786 /* TrackingViewModel.swift */; };
+		B678D5B42B788B1A009E257F /* OpenAI in Frameworks */ = {isa = PBXBuildFile; productRef = B678D5B32B788B1A009E257F /* OpenAI */; };
+		B678D5B62B78A260009E257F /* ChattingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B678D5B52B78A260009E257F /* ChattingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +69,7 @@
 		B66878C92B78110B000DB786 /* TodaysInsightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodaysInsightView.swift; sourceTree = "<group>"; };
 		B66878CB2B7814F4000DB786 /* SimpleCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleCalendarView.swift; sourceTree = "<group>"; };
 		B66878CD2B7857AC000DB786 /* TrackingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingViewModel.swift; sourceTree = "<group>"; };
+		B678D5B52B78A260009E257F /* ChattingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChattingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +77,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B678D5B42B788B1A009E257F /* OpenAI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -127,6 +131,7 @@
 				B66878B82B77B30E000DB786 /* DailySummaryView.swift */,
 				B66878C42B77D4C1000DB786 /* LaunchScreenView.swift */,
 				B668788E2B772420000DB786 /* ContentView.swift */,
+				B678D5B52B78A260009E257F /* ChattingView.swift */,
 				B66878CB2B7814F4000DB786 /* SimpleCalendarView.swift */,
 				B66878C22B77C48C000DB786 /* UserProfileView.swift */,
 				B66878BC2B77B373000DB786 /* AddEntryView.swift */,
@@ -178,6 +183,9 @@
 			dependencies = (
 			);
 			name = "meal-mentor";
+			packageProductDependencies = (
+				B678D5B32B788B1A009E257F /* OpenAI */,
+			);
 			productName = "meal-mentor";
 			productReference = B66878892B772420000DB786 /* meal-mentor.app */;
 			productType = "com.apple.product-type.application";
@@ -250,6 +258,9 @@
 				Base,
 			);
 			mainGroup = B66878802B772420000DB786;
+			packageReferences = (
+				B678D5B22B788B1A009E257F /* XCRemoteSwiftPackageReference "OpenAI" */,
+			);
 			productRefGroup = B668788A2B772420000DB786 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -302,6 +313,7 @@
 				B66878BD2B77B374000DB786 /* AddEntryView.swift in Sources */,
 				B668788D2B772420000DB786 /* meal_mentorApp.swift in Sources */,
 				B66878BF2B77C07B000DB786 /* ColorExtension.swift in Sources */,
+				B678D5B62B78A260009E257F /* ChattingView.swift in Sources */,
 				B66878CC2B7814F4000DB786 /* SimpleCalendarView.swift in Sources */,
 				B66878BB2B77B358000DB786 /* EntryListView.swift in Sources */,
 				B66878CE2B7857AC000DB786 /* TrackingViewModel.swift in Sources */,
@@ -630,6 +642,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		B678D5B22B788B1A009E257F /* XCRemoteSwiftPackageReference "OpenAI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/MacPaw/OpenAI";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.2.5;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B678D5B32B788B1A009E257F /* OpenAI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B678D5B22B788B1A009E257F /* XCRemoteSwiftPackageReference "OpenAI" */;
+			productName = OpenAI;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = B66878812B772420000DB786 /* Project object */;
 }
